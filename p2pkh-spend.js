@@ -29,7 +29,7 @@ const RECEIVER_CASH_ADDRESS = 'bitcoincash:qqlrzp23w08434twmvr4fxw672whkjy0py26r
 
 // Update this information with the UTXO to be spent.
 const UTXO = {
-  tx_hash: '7b6245c560f7b4efdc5a2868e5aba11957c57d1222f66d7e9e297879facc9e41',
+  tx_hash: '58aeccbb04323bf196b32be91386ae6a67c121508feb5ca2f157b5db3adb0e10',
   tx_pos: 0,
   value: 10000
 }
@@ -77,7 +77,7 @@ async function sendP2pkh () {
     // Generate the output of the transaction.
     const someOutput = {
       lockingBytecode: outputScript.bytecode,
-      valueSatoshis: satsAvailable - 250n // 400 sats for tx fee
+      valueSatoshis: satsAvailable - 250n // 250 sats for tx fee
     }
 
     // Generate the input of the transaction.
