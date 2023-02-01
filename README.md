@@ -6,6 +6,8 @@ I'm trying to implement the double-blind escrow Script that was used by local.bi
 ## P2PKH
 A P2PKH is the simplest, most common type of transaction. I decided to start with this transaction first, as a way to learn the tooling and functions needed to build a transaction with libauth.
 
+- [p2pkh-spend.js](./p2pkh-spend.js)
+
 ## Reference Data
 Original data from Sam:
 - [Sam's video walkthrough](https://rumble.com/v27r0cq-localcryptosscript.html)
