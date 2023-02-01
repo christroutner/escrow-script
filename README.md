@@ -3,6 +3,10 @@
 This is a sandbox repository of JavaScript code. I'm using it to explore the implementation of a Bitcoin Script in Bitcoin Cash (BCH).
 I'm trying to implement the double-blind escrow Script that was used by local.bitcoin.com.
 
+## P2PKH
+A P2PKH is the simplest, most common type of transaction. I decided to start with this transaction first, as a way to learn the tooling and functions needed to build a transaction with libauth.
+
+## Reference Data
 Original data from Sam:
 - [Sam's video walkthrough](https://rumble.com/v27r0cq-localcryptosscript.html)
 - [Sam's source code](https://pastebin.mozilla.org/k03WgtEQ)

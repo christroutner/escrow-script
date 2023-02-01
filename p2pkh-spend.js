@@ -36,15 +36,17 @@ const UTXO = {
 
 async function sendP2pkh () {
   try {
+    // Import the private key for the 'owner' of the BCH.
     const owner = decodePrivateKeyWif(OWNER_PRIVATE_KEY)
     // console.log('owner: ', owner)
 
-    // Import the template
+    // Import the P2PKH template
     const template = importAuthenticationTemplate(p2pkhTemplate)
 
     // Instantiate the BCH VM compiler.
     const compiler = authenticationTemplateToCompilerBCH(template)
 
+    // Compile the template into bytecode.
     const p2pkhLockingBytecode = compiler.generateBytecode({
       scriptId: 'lock',
       data: {
@@ -66,23 +68,23 @@ async function sendP2pkh () {
       throw new Error(p2pkhLockingBytecode.errors)
     }
 
-    // const satsAvailable = 10_000n
     const satsAvailable = BigInt(UTXO.value)
 
+    // Generate the output script from the cash address of the receiver.
     const outputScript = cashAddressToLockingBytecode(RECEIVER_CASH_ADDRESS)
     // console.log('outputScript: ', outputScript)
 
+    // Generate the output of the transaction.
     const someOutput = {
       lockingBytecode: outputScript.bytecode,
       valueSatoshis: satsAvailable - 250n // 400 sats for tx fee
     }
 
+    // Generate the input of the transaction.
     const inputWithScript = {
       outpointIndex: UTXO.tx_pos,
       outpointTransactionHash: hexToBin(UTXO.tx_hash),
-      // sequenceNumber: 0xffffffff,
       sequenceNumber: 0,
-      // unlockingBytecode: p2pkhInput.unlockingBytecode
       unlockingBytecode: {
         compiler,
         data: {
@@ -93,6 +95,7 @@ async function sendP2pkh () {
       }
     }
 
+    // Generate the transaction.
     const transaction = generateTransaction({
       inputs: [inputWithScript],
       locktime: 0,
@@ -102,11 +105,13 @@ async function sendP2pkh () {
     // console.log('transaction: ', transaction)
     // console.log('transaction.transaction.outputs: ', transaction.transaction.outputs)
 
+    // Convert the transaction to a hex representation.
     let hex = ''
     if (transaction.success) {
       hex = binToHex(encodeTransaction(transaction.transaction))
       console.log('Transaction hex:')
       console.log(hex)
+      console.log('')
     } else {
       throw new Error(transaction.errors[0])
     }
