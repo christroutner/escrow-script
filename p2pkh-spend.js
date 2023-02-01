@@ -24,11 +24,12 @@ import { p2pkhTemplate } from './templates/single_signature_p2pkh.bitauth-templa
 // Constants
 // Private key in WIF format. Address: bitcoincash:qrxlmjwfnpuk0zrf749x6y86puh6e0zlzvdmhkxy00
 const OWNER_PRIVATE_KEY = 'L4j4bx9srAiUWMGQ2Vib6iMBHop1tsQqutv5erZ9vRvohMN4v6te'
-const OWNER_CASH_ADDRESS = 'bitcoincash:qrxlmjwfnpuk0zrf749x6y86puh6e0zlzvdmhkxy00'
+// const OWNER_CASH_ADDRESS = 'bitcoincash:qrxlmjwfnpuk0zrf749x6y86puh6e0zlzvdmhkxy00'
+const RECEIVER_CASH_ADDRESS = 'bitcoincash:qqlrzp23w08434twmvr4fxw672whkjy0py26r63g3d'
 
 // Update this information with the UTXO to be spent.
 const UTXO = {
-  tx_hash: '1f23003367cb55cbe721ade66b54fb1088ef4434f8c283d302fbecfae4481493',
+  tx_hash: 'e7fa1f829f8a461d118fb7e2e6d38bebd4ec0b09ba8949869f64f782b0b87e16',
   tx_pos: 0,
   value: 10000
 }
@@ -65,15 +66,15 @@ async function sendP2pkh () {
       throw new Error(p2pkhLockingBytecode.errors)
     }
 
-    const someInput = {
-      outpointIndex: 0,
-      outpointTransactionHash: hexToBin(UTXO.tx_hash),
-      sequenceNumber: 0xffffffff,
-      unlockingBytecode: Uint8Array.from([])
-    }
+    // const someInput = {
+    //   outpointIndex: 0,
+    //   outpointTransactionHash: hexToBin(UTXO.tx_hash),
+    //   sequenceNumber: 0xffffffff,
+    //   unlockingBytecode: Uint8Array.from([])
+    // }
     const satsAvailable = 10_000n
 
-    const outputScript = cashAddressToLockingBytecode(OWNER_CASH_ADDRESS)
+    const outputScript = cashAddressToLockingBytecode(RECEIVER_CASH_ADDRESS)
     console.log('outputScript: ', outputScript)
 
     const someOutput = {
@@ -81,10 +82,27 @@ async function sendP2pkh () {
       valueSatoshis: satsAvailable - 400n
     }
 
-    const p2pkhInput = {
-      outpointIndex: someInput.outpointIndex,
-      outpointTransactionHash: someInput.outpointTransactionHash,
+    // const p2pkhInput = {
+    //   outpointIndex: someInput.outpointIndex,
+    //   outpointTransactionHash: someInput.outpointTransactionHash,
+    //   sequenceNumber: 0,
+    //   unlockingBytecode: {
+    //     compiler,
+    //     data: {
+    //       keys: { privateKeys: { key: owner.privateKey } }
+    //     },
+    //     valueSatoshis: BigInt(satsAvailable),
+    //     script: 'unlock'
+    //     // token: libAuthToken,
+    //   }
+    // }
+
+    const inputWithScript = {
+      outpointIndex: UTXO.tx_pos,
+      outpointTransactionHash: hexToBin(UTXO.tx_hash),
+      // sequenceNumber: 0xffffffff,
       sequenceNumber: 0,
+      // unlockingBytecode: p2pkhInput.unlockingBytecode
       unlockingBytecode: {
         compiler,
         data: {
@@ -92,17 +110,10 @@ async function sendP2pkh () {
         },
         valueSatoshis: BigInt(satsAvailable),
         script: 'unlock'
-        // token: libAuthToken,
       }
     }
 
-    const inputWithScript = {
-      outpointIndex: someInput.outpointIndex,
-      outpointTransactionHash: someInput.outpointTransactionHash,
-      sequenceNumber: 0xffffffff,
-      unlockingBytecode: p2pkhInput.unlockingBytecode
-    }
-
+    console.log('Generating transaction...')
     const transaction = generateTransaction({
       inputs: [inputWithScript],
       locktime: 0,
