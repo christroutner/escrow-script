@@ -6,7 +6,7 @@ export const localCryptosTemplate = {
   entities: {
     arbiter: {
       description: '',
-      name: 'Arbiter',
+      name: 'arbiter',
       variables: {
         arbiter_key: {
           description: 'arbiter wallet key',
