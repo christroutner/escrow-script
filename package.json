@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/christroutner/escrow-script#readme",
   "dependencies": {
-    "@bitauth/libauth": "../libauth/",
+    "@bitauth/libauth": "2.0.0-alpha.8",
     "minimal-slp-wallet": "5.8.5"
   },
   "devDependencies": {
