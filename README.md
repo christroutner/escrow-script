@@ -14,7 +14,7 @@ The escrow Script address can be generated with [this app](./1-escrow-get-addres
 - [Buyer returns the funds to the Seller](./2-escrow-buyer-return.js)
 - [Seller releases funds to the Buyer](./3-escrow-released-by-seller.js)
 - [Arbiter releases funds to the Buyer](./4-escrow-release-to-buyer-by-arbiter.js)
-- [Arbiter returns funds to the Seller](./5-escrow-returned-toseller-by-arbiter.js)
+- [Arbiter returns funds to the Seller](./5-escrow-returned-to-seller-by-arbiter.js)
 
 ## Fee
 
