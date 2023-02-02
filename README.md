@@ -8,6 +8,22 @@ A P2PKH is the simplest, most common type of transaction. I decided to start wit
 
 - [p2pkh-spend.js](./p2pkh-spend.js)
 
+## Escrow
+The escrow Script address can be generated with [this app](./1-escrow-get-address.js), and in the [LocalCrypt blog](https://blog.localcryptos.com/bitcoin-cash-trading-begins/) is funded by the Seller. It has four possible outcomes:
+
+- [Buyer returns the funds to the Seller](./2-escrow-buyer-return.js)
+- [Seller releases funds to the Buyer](./3-escrow-released-by-seller.js)
+- [Arbiter releases funds to the Buyer](./4-escrow-release-to-buyer-by-arbiter.js)
+- [Arbiter returns funds to the Seller](./5-escrow-returned-toseller-by-arbiter.js)
+
+## Fee
+
+When the Seller funds the escrow Script, they are expected to also [fund a second address](./6-fee-seller-fund.js) which represents a service fee. There are three possible outcomes of this Script:
+
+- [Seller cancels trade and gets the fee back](./7-fee-seller-cancel.js)
+- [Arbiter receives the fee](./8-fee-to-arbiter.js) (not working)
+- [Arbiter returns fee to Seller](./9-fee-returned-to-seller-by-arbiter.js) (not working)
+
 ## Reference Data
 Original data from Sam:
 - [Sam's video walkthrough](https://rumble.com/v27r0cq-localcryptosscript.html)
