@@ -7,6 +7,7 @@ I'm trying to implement the double-blind escrow Script that was used by local.bi
 A P2PKH is the simplest, most common type of transaction. I decided to start with this transaction first, as a way to learn the tooling and functions needed to build a transaction with libauth.
 
 - [p2pkh-spend.js](./p2pkh-spend.js)
+- [Code walk-through video](https://youtu.be/E0fo-L0h7a8)
 
 ## Escrow
 The escrow Script address can be generated with [this app](./1-escrow-get-address.js), and in the [LocalCrypt blog](https://blog.localcryptos.com/bitcoin-cash-trading-begins/) is funded by the Seller. It has four possible outcomes:
