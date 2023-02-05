@@ -38,7 +38,7 @@ const ARBITER_CASH_ADDRESS = 'bitcoincash:qrwe6kxhvu47ve6jvgrf2d93w0q38av7s5xm9x
 
 // Update this information with the UTXO to be spent.
 const UTXO = {
-  tx_hash: '93733b50f5f68759fc548d0b89e362fde4cd9e180a24e70567131d73ff3dfc18',
+  tx_hash: '4d6d74764d3e276a238acc3f9dafaeebab934035fcf86bf2f534aa6f5177ed49',
   tx_pos: 0,
   value: 10000
 }

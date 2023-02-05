@@ -22,8 +22,8 @@ The escrow Script address can be generated with [this app](./1-escrow-get-addres
 When the Seller funds the escrow Script, they are expected to also [fund a second address](./6-fee-seller-fund.js) which represents a service fee. There are three possible outcomes of this Script:
 
 - [Seller cancels trade and gets the fee back](./7-fee-seller-cancel.js)
-- [Arbiter receives the fee](./8-fee-to-arbiter.js) (not working)
-- [Arbiter returns fee to Seller](./9-fee-returned-to-seller-by-arbiter.js) (not working)
+- [Arbiter receives the fee](./8-fee-to-arbiter.js)
+- [Arbiter returns fee to Seller](./9-fee-returned-to-seller-by-arbiter.js)
 
 ## Reference Data
 Original data from Sam:

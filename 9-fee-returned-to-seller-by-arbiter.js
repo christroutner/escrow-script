@@ -38,7 +38,7 @@ const SELLER_CASH_ADDRESS = 'bitcoincash:qqwvnnjv6rz382c3sp37qynlcrr76zzhwqkdcqr
 
 // Update this information with the UTXO to be spent.
 const UTXO = {
-  tx_hash: '93733b50f5f68759fc548d0b89e362fde4cd9e180a24e70567131d73ff3dfc18',
+  tx_hash: 'c83c5d95ed450be72cce119a31d4d782f9d7cbe00e31e69407a17cdf145d63fc',
   tx_pos: 0,
   value: 10000
 }
